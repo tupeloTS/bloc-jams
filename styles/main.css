@@ -62,6 +62,12 @@ html {
  .links-container .navbar-link:hover {
      color: rgb(233,50,117);
  }
+.links-container .navbar-link:active {
+     color: rgb(233,50,117);
+ }
+.links-container .navbar-link:active {
+     background-color: floralwhite50,117);
+ }
  
  .navbar .links-container {
      display: table;
