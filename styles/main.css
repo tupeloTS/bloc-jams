@@ -63,11 +63,10 @@ html {
      color: rgb(233,50,117);
  }
 .links-container .navbar-link:active {
-     color: rgb(233,50,117);
- }
-.links-container .navbar-link:active {
-     background-color: floralwhite50,117);
- }
+  color: rgb(233, 50, 117);
+  background-color: white; 
+}
+
  
  .navbar .links-container {
      display: table;
