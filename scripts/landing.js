@@ -22,6 +22,7 @@ window.onload = function() {
     var sellingPoints = document.getElementsByClassName('selling-points')[0];
     
     window.addEventListener('scroll', function(event) {
+        console.log(event);
          
     var scrollDistance = sellingPoints.getBoundingClientRect().top - window.innerHeight + 200;
     if (document.body.scrollTop >= scrollDistance) {
