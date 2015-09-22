@@ -79,7 +79,7 @@ var setCurrentAlbum = function(album) {
  
      // #4
      for (i = 0; i < album.songs.length; i++) {
-         albumSongList.innerHTML += createSongRow(i + 1, album.songs[i].name,                               album.songs[i].length);
+         albumSongList.innerHTML += createSongRow(i + 1, album.songs[i].name, album.songs[i].length);                                                          
      }
  
  };
@@ -88,13 +88,13 @@ var setCurrentAlbum = function(album) {
    
      setCurrentAlbum(albumPicasso);
    var albums = [albumPicasso, albumMarconi, albumLevon];
-   var index = 1; 
+   var i = 1; 
 
   albumImage.addEventListener("click", function(event) {
-      setCurrentAlbum(albums[index]);
-      index++;
-      if (index == albums.length) { 
-          index  = 0;
+      setCurrentAlbum(albums[i]);
+      i++;
+      if (i == albums.length) { 
+          i  = 0;
         
       }
   });     
