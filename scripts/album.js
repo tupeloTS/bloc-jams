@@ -59,7 +59,7 @@
  
  };
  
- // #1
+
 var albumTitle = document.getElementsByClassName('album-view-title')[0];
 var albumArtist = document.getElementsByClassName('album-view-artist')[0];
 var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
@@ -74,10 +74,10 @@ var setCurrentAlbum = function(album) {
      albumReleaseInfo.firstChild.nodeValue = album.year + ' ' + album.label;
      albumImage.setAttribute('src', album.albumArtUrl);
  
-     // #3
+     
      albumSongList.innerHTML = '';
  
-     // #4
+    
      for (i = 0; i < album.songs.length; i++) {
          albumSongList.innerHTML += createSongRow(i + 1, album.songs[i].name, album.songs[i].length);                                                          
      }
@@ -135,12 +135,12 @@ var getSongItem = function(element) {
 var songListContainer = document.getElementsByClassName('album-view-song-list')[0];
 var songRows = document.getElementsByClassName('album-view-song-item');
 
- // Album button templates
+ 
 
 var playButtonTemplate = '<a class="album-song-button"><span class="ion-play"></span></a>';
 var pauseButtonTemplate = '<a class="album-song-button"><span class="ion-pause"></span></a>';
 
- // Store state of playing songs
+
  var currentlyPlayingSong = null;
 
  window.onload = function() {
@@ -149,11 +149,11 @@ var pauseButtonTemplate = '<a class="album-song-button"><span class="ion-pause">
      
      for (i = 0; i < songRows.length; i++) {
          songRows[i].addEventListener('mouseleave', function(event) {
-             // Revert the content back to the number
+             
               var songItem = getSongItem(event.target);
              var songItemNumber = songItem.getAttribute('data-song-number');
  
-             // #2
+             
              if (songItemNumber !== currentlyPlayingSong) {
                  songItem.innerHTML = songItemNumber;
              }
@@ -167,8 +167,6 @@ var pauseButtonTemplate = '<a class="album-song-button"><span class="ion-pause">
 
      
      songListContainer.addEventListener('mouseover', function(event) {
-         // #1
-          // Only target individual song rows during event delegation
      if (event.target.parentElement.className === 'album-view-song-item') {
         event.target.parentElement.querySelector('.song-item-number').innerHTML = playButtonTemplate;
             var songItem = getSongItem(event.target);
