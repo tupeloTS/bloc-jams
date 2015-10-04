@@ -84,14 +84,12 @@ var createSongRow = function(songNumber, songName, songLength) {
         if (songNumber !== currentlyPlayingSong) {
             songNumberCell.html(songNumber);
         }
-    };
-
-    
-     $row.find('.song-item-number').click(clickHandler);
+};
+        $row.find('.song-item-number').click(clickHandler);
      // #2
      $row.hover(onHover, offHover);
      // #3
-     return $row;
+     return $row; 
 };
 
 var setCurrentAlbum = function(album) {
@@ -124,4 +122,4 @@ var currentlyPlayingSong = null;
 
 $(document).ready(function() {
     setCurrentAlbum(albumPicasso);
-};
+});
