@@ -161,6 +161,8 @@ var previousSong = function() {
     
 };
 
+
+
 var updatePlayerBarSong = function() {
 
     $('.currently-playing .song-name').text(currentSongFromAlbum.name);
