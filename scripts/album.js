@@ -17,15 +17,14 @@ var createSongRow = function(songNumber, songName, songLength) {
 
         if (currentlyPlayingSongNumber !== null) {
             // Revert to song number for currently playing song because user started playing new song.
-            var currentlyPlayingCell = $('.song-item-number[data-song-number="' + currentlyPlayingSong + '"]');
+            var currentlyPlayingCell = $('.song-item-number[data-song-number="' + currentlyPlayingSongNumber + '"]');
             currentlyPlayingCell.html(currentlyPlayingSongNumber);
         }
 
         if (currentlyPlayingSongNumber !== songNumber) {
             // Switch from Play -> Pause button to indicate new song is playing.
             $(this).html(pauseButtonTemplate);
-            currentlyPlayingSongNumber = songNumber;
-            currentSongFromAlbum = currentAlbum.songs[songNumber - 1];
+            setSong(songNumber);
             updatePlayerBarSong();
         }
 
@@ -44,7 +43,6 @@ var createSongRow = function(songNumber, songName, songLength) {
     var onHover = function(event) {
         var songNumberCell = $(this).find('.song-item-number');
         var songNumber = parseInt(songNumberCell.attr('data-song-number'));
-
         if (songNumber !== currentlyPlayingSongNumber) {
             songNumberCell.html(playButtonTemplate);
         }
@@ -108,8 +106,7 @@ var nextSong = function() {
     }
     
     // Set a new current song
-    currentlyPlayingSongNumber = currentSongIndex + 1;
-    currentSongFromAlbum = currentAlbum.songs[currentSongIndex];
+    setSong(currentSongIndex);
 
     // Update the Player Bar information
     $('.currently-playing .song-name').text(currentSongFromAlbum.name);
@@ -143,8 +140,7 @@ var previousSong = function() {
     }
     
     // Set a new current song
-    currentlyPlayingSongNumber = currentSongIndex + 1;
-    currentSongFromAlbum = currentAlbum.songs[currentSongIndex];
+    setSong(currentSongIndex);
 
     // Update the Player Bar information
     $('.currently-playing .song-name').text(currentSongFromAlbum.name);
@@ -161,7 +157,10 @@ var previousSong = function() {
     
 };
 
-
+var setSong = function(number) {
+    currentlyPlayingSongNumber = number + 1;
+    currentSongFromAlbum = currentAlbum.songs[number];
+};
 
 var updatePlayerBarSong = function() {
 
