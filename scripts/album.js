@@ -15,6 +15,7 @@ var createSongRow = function(songNumber, songName, songLength) {
     var $row = $(template);
     
     var clickHandler = function() {
+        
         var songNumber = parseInt($(this).attr('data-song-number'));
 
         if (currentlyPlayingSongNumber !== null) {
@@ -30,12 +31,14 @@ var createSongRow = function(songNumber, songName, songLength) {
         }
 
         else if (currentlyPlayingSongNumber === songNumber) {
-            $(this).html(playButtonTemplate);
-            $('.main-controls .play-pause').html(playerBarPlayButton);
-            currentlyPlayingSongNumber = null;
-            currentSongFromAlbum = null;
+            if (currentSoundFile.isPaused()) {
+                $(this).html(pauseButtonTemplate);
+                $('.main-controls .play-pause').html(playerBarPauseButton);
+            } else {
+                $(this).html(playButtonTemplate);
+                $('.main-controls .play-pause').html(playerBarPlayButton); 
+            }
         }
-
     };
     
    
@@ -54,7 +57,6 @@ var createSongRow = function(songNumber, songName, songLength) {
 
         if (songNumber !== currentlyPlayingSongNumber) {
             songNumberCell.html(songNumber);
-            
         }
     };
 
@@ -154,7 +156,7 @@ var previousSong = function() {
 };
 
 var setSong = function(songNumber) {
-    currentlyPlayingSongNumber = number + 1;
+    currentlyPlayingSongNumber = parseInt(songNumber);
     currentSongFromAlbum = currentAlbum.songs[songNumber - 1];
 };
 
