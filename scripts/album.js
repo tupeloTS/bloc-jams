@@ -39,7 +39,7 @@ var createSongRow = function(songNumber, songName, songLength) {
             } else {
                 $(this).html(playButtonTemplate);
                 $('.main-controls .play-pause').html(playerBarPlayButton);
-                $currentSoundFile.paused();
+                currentSoundFile.pause();
                 
             }
         }
@@ -167,7 +167,7 @@ var togglePlayFromPlayerBar = function() {
         $(this).html(playerBarPauseButton);
      //$('.main-controls .play-pause').html(playerBarPauseButton);
         currentSoundFile.play();
-    } else if (currentSoundFile.isPlaying) {
+    } else if (currentSoundFile) {
         $(this).html(playerBarPlayButton);
         $currentlyPlayingCell.html(playButtonTemplate);
       //$('.main-controls .play-pause').html(playerBarPlayButton);
