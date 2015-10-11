@@ -39,7 +39,8 @@ var createSongRow = function(songNumber, songName, songLength) {
             } else {
                 $(this).html(playButtonTemplate);
                 $('.main-controls .play-pause').html(playerBarPlayButton);
-                currentSoundFile.paused();
+                $currentSoundFile.paused();
+                
             }
         }
     };
@@ -160,15 +161,17 @@ var previousSong = function() {
 };
 
 var togglePlayFromPlayerBar = function() {
-    currentlyPlayingCell = getSongNumberCell(currentlyPlayingSongNumber); 
+    var $currentlyPlayingCell = getSongNumberCell(currentlyPlayingSongNumber); 
     if (currentSoundFile.isPaused()) {
-     $(this).html(pauseButtonTemplate);
-     $('.main-controls .play-pause').html(playerBarPauseButton);
-     currentSoundFile.play();
+        $currentlyPlayingCell.html(pauseButtonTemplate);
+        $(this).html(playerBarPauseButton);
+     //$('.main-controls .play-pause').html(playerBarPauseButton);
+        currentSoundFile.play();
     } else if (currentSoundFile.isPlaying) {
-      $(this).html(playButtonTemplate);
-      $('.main-controls .play-pause').html(playerBarPlayButton);
-      currentSoundFile.pause();
+        $(this).html(playerBarPlayButton);
+        $currentlyPlayingCell.html(playButtonTemplate);
+      //$('.main-controls .play-pause').html(playerBarPlayButton);
+        currentSoundFile.pause();
     }
 };
 
